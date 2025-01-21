@@ -1,0 +1,11 @@
+---
+- name: Ansible os check playbook
+  hosts: all
+  tasks:
+    - name: checking whether os is Redhat and print a msg
+      shell: echo "this is a rhel based machine"
+      when: ansible_distribution == "RedHat"
+    - name: checking whether os is ubuntu and print a msg
+      shell: echo "this is a ubuntu based machine"
+      when: ansible_distribution == "Ubuntu"
+...        
