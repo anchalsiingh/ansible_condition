@@ -1,0 +1,16 @@
+---
+- name: example of configionals in ansible
+  hosts: all
+  become: true
+  tasks:
+    - name: install the apache web server on the redhat based machines
+      yum:
+         name: httpd
+         state: installed
+      when: ansible_distribution == "RedHat"
+    - name: install the apache web server on the Ubuntu based machines
+      apt:
+         name: apache2
+         state: present
+      when: ansible_distribution == "Ubuntu"
+...        

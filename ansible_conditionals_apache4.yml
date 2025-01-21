@@ -1,0 +1,11 @@
+---
+- name: example of configionals in ansible
+  hosts: all
+  become: true
+  tasks:
+    - name: install ftp package if the node is redhat based machine & having major version 9.4
+      yum:
+         name: ftp
+         state: installed
+      when: ansible_distribution == 'RedHat' or 'CentOS'
+...                 
